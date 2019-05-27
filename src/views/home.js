@@ -7,7 +7,7 @@ import {Marker, Circle, Overlay} from 'react-native-maps';
 import Amplify from 'aws-amplify';
 import { Auth } from 'aws-amplify';
 import awsConfig from '../util/config.js';
-import Header from '../util/CustomHeader.js';
+import Header, {headerHeight} from '../util/CustomHeader.js';
 
 
 
@@ -216,7 +216,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Header navigation={this.props.navigation}/>
+
 
                 {this.state.showScheduleModal && (
                     <ScheduleModal
@@ -236,6 +236,7 @@ export default class Home extends React.Component {
                     showsUserLocation={true}
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >
+                    <Header navigation={this.props.navigation}/>
                     <Circle
                         //TODO: update latlng on user location change
                         center={this.state.latlng}
@@ -284,13 +285,19 @@ export default class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        //...StyleSheet.absoluteFillObject,
+        ...StyleSheet.absoluteFillObject,
         justifyContent: 'flex-end',
         alignItems: 'center',
     },
     map: {
         flex:1,
-        //...StyleSheet.absoluteFillObject,
+        position: 'absolute',
+        right: 0,
+        bottom: 0,
+        left: 0,
+        //top: headerHeight,
+        top: 0,
+
     },
     buttonContainer: {
         flexDirection: 'row',

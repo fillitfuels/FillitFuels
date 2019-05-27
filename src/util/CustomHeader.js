@@ -12,6 +12,7 @@ const CustomHeader = ({navigation}) => (
             name='md-menu'
             size={32}
             color='black'
+            style={styles.icon}
             onPress={() => navigation.openDrawer()}
             />
     </View>
@@ -19,17 +20,23 @@ const CustomHeader = ({navigation}) => (
 
 export default CustomHeader;
 
+const headerHeight = 70;
+export {headerHeight};
+
 
 const styles = {
     container: {
-        borderBottomWidth: 2,
-        height: 70,
+        height: headerHeight,
         paddingTop: 20,
-        backgroundColor: 'white',
+        //backgroundColor: 'white',
         flex:1,
         position: 'absolute',
         left: 0,
         top: 0,
         width: width,
     },
+    icon: {
+        paddingLeft: 20,
+        paddingTop: 5,
+    }
 };
