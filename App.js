@@ -4,6 +4,7 @@ import {StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar} from 're
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import MapView from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import { createDrawerNavigator} from "react-navigation";
+import {Authenticator} from 'aws-amplify-react-native';
 
 import MainNavigator from './src/Main.js';
 
@@ -105,7 +106,10 @@ type Props = {};
 export default class App extends Component<Props> {
     render() {
         return (
-            <MainNavigator/>
+            <Authenticator>
+                <MainNavigator/>
+            </Authenticator>
+
         );
     }
 }
