@@ -5,6 +5,8 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import MapView from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import { createDrawerNavigator} from "react-navigation";
 
+import MainNavigator from './src/Main.js';
+
 
 class HomeScreen extends Component{
     static navigationOptions = {
@@ -27,7 +29,7 @@ class HomeScreen extends Component{
                     placeholder= "Password"
                     secureTextEntry
                 />
-                <View style={styles.btnContainer}>
+                    <View style={styles.btnContainer}>
                     <TouchableOpacity
                         style={styles.userBtn}
                         onPress={() => this.props.navigation.navigate('Details')}>
@@ -103,7 +105,7 @@ type Props = {};
 export default class App extends Component<Props> {
     render() {
         return (
-            <AppContainer/>
+            <MainNavigator/>
         );
     }
 }
