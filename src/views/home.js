@@ -11,8 +11,6 @@ import Header, {headerHeight} from '../util/CustomHeader.js';
 
 
 
-
-
 //import { withAuthenticator } from "aws-amplify-react-native";
 Amplify.configure(awsConfig);
 
