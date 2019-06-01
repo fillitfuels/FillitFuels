@@ -103,8 +103,9 @@ class SignUpScreen extends Component{
 
 
 type Props = {};
+
 /*
-export default class App extends Component<Props> {
+//  export default class App extends Component<Props> {
     render() {
         return (
             <Authenticator>
