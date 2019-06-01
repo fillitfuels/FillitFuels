@@ -20,7 +20,7 @@
     "react-native-modal": "^11.0.1",
     "react-native-scripts": "^2.0.1",
     "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^3.0.9",
+    "react-navigation": "latest",
     "yarn": "^1.16.0"
   },
   "devDependencies": {
@@ -36,7 +36,8 @@
   },
   "rnpm": {
     "assets": [
-      "./assets/fonts/"
+      "./assets/fonts/",
+      "./assets/Pictures/"
     ]
   }
 }
