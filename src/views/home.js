@@ -8,6 +8,7 @@ import Amplify from 'aws-amplify';
 import { Auth } from 'aws-amplify';
 import awsConfig from '../util/config.js';
 import Header, {headerHeight} from '../util/CustomHeader.js';
+import LocationSearch from '../util/LocationSearch.js';
 
 
 
@@ -192,6 +193,7 @@ export default class Home extends React.Component {
     handleRegionChange(region)
     {
         //can do checking and only allow re-pulling of gas stations on movement of x miles away from original pull
+        if(!region || !region.latitude || !region.longitude) return;
         this.setState({
             regionChanged: true,
             newLatLng: {
@@ -234,7 +236,11 @@ export default class Home extends React.Component {
                     showsUserLocation={true}
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >
-                    <Header navigation={this.props.navigation}/>
+                    <View>
+                        <Header navigation={this.props.navigation}/>
+                        <LocationSearch style={styles.search}/>
+                    </View>
+
                     <Circle
                         //TODO: update latlng on user location change
                         center={this.state.latlng}
@@ -319,6 +325,9 @@ const styles = StyleSheet.create({
         height: 50,
         backgroundColor: 'gray',
     },
+    search: {
+        top: 200,
+    }
 
 });
 
