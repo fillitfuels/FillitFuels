@@ -255,6 +255,7 @@ export default class Home extends React.Component {
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >
                     <View>
+
                         <Header navigation={this.props.navigation}/>
                         <LocationSearch
                             handlePress={(data) => this.handleLocationSelected(data)}
@@ -336,7 +337,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         alignItems: 'center',
         marginHorizontal: 10,
-        marginBottom: 650,
     },
     bubble: {
         backgroundColor: 'rgba(255,255,255,0.7)',
@@ -344,6 +344,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         borderRadius: 20,
     },
+
     marker: {
         width: 75,
         height: 50,

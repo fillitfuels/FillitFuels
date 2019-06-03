@@ -5,7 +5,7 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import {headerWidth, remainingWidth} from './CustomHeader.js';
 import {key} from './keyinfo.js';
 
-const searchRadius = 15000; //radius around current location
+const searchRadius = 1500; //radius around current location
 
 
 const LocationSearch = ({handlePress, latitude, longitude}) => {
