@@ -289,7 +289,7 @@ export default class Home extends React.Component {
                                 description={marker.description}>
                             <View style={styles.marker}>
                                 <Image source={require(marker.icon)}/>
-                                <Text>{marker.title}{'\n'}{marker.description}</Text>
+                                <Text>{marker.description}</Text>
                             </View>
                         </Marker>
                     ))}
