@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import {TouchableOpacity, Text, View, StyleSheet, TextInput} from 'react-native';
 
 
 import MapView from 'react-native-maps';
@@ -271,6 +271,7 @@ export default class Home extends React.Component {
                             <Text>Search in this Region</Text>
                         </TouchableOpacity>
                     )}
+
                 </View>
 
 
@@ -307,6 +308,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         alignItems: 'center',
         marginHorizontal: 10,
+        marginBottom: 650,
     },
     bubble: {
         backgroundColor: 'rgba(255,255,255,0.7)',
@@ -318,6 +320,12 @@ const styles = StyleSheet.create({
         width: 75,
         height: 50,
         backgroundColor: 'gray',
+    },
+    input: {
+        width: "90%",
+        backgroundColor: "#fff",
+        padding: 15,
+        marginBottom: 10
     },
 
 });

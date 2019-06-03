@@ -6,10 +6,11 @@ import { createAppContainer, createDrawerNavigator } from "react-navigation";
 import Home from './views/home.js';
 import Payment from './views/payment.js';
 import Address from './views/addresses.js';
-import About from './views/about.js'; //remove
+import Vehicles from './views/vehicles';
 import Settings from './views/settings.js';
 import Gift from './views/gift';
 import CustomDrawerNavigator from './views/CustomDrawerNavigator.js';
+import Vehicle from "./views/vehicles";
 
 const MainNavigator = createDrawerNavigator({
     Home: {
@@ -28,6 +29,15 @@ const MainNavigator = createDrawerNavigator({
         },
         screen: Payment,
     },
+
+        Vehicle: {
+            navigationOptions: {
+                drawerLabel: "Vehicles",
+                //drawerIcon: TODO: implement icons
+            },
+            screen: Vehicle,
+        },
+
         Address: {
             navigationOptions: {
                 drawerLabel: "Addresses",
