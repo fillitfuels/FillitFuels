@@ -336,7 +336,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         alignItems: 'center',
         marginHorizontal: 10,
-        marginBottom: 650,
     },
     bubble: {
         backgroundColor: 'rgba(255,255,255,0.7)',
