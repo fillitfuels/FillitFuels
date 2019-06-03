@@ -77,3 +77,7 @@ RNTester/build
 
 # google API key
 **/AndroidManifest.xml
+
+
+#ModuleCache
+**/ModuleCache.noindex

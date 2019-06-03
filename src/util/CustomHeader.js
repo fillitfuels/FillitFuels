@@ -21,19 +21,21 @@ const CustomHeader = ({navigation}) => (
 export default CustomHeader;
 
 const headerHeight = 70;
-export {headerHeight};
+const headerWidth = 50;
+const remainingWidth = width - headerWidth;
+export {headerHeight, headerWidth, remainingWidth};
 
 
 const styles = {
     container: {
         height: headerHeight,
         paddingTop: 20,
-        //backgroundColor: 'white',
         flex:1,
         position: 'absolute',
         left: 0,
         top: 0,
-        width: width,
+        //width: width,
+        width: headerWidth,
     },
     icon: {
         paddingLeft: 20,

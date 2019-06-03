@@ -8,6 +8,8 @@ import Amplify from 'aws-amplify';
 import { Auth } from 'aws-amplify';
 import awsConfig from '../util/config.js';
 import Header, {headerHeight} from '../util/CustomHeader.js';
+import LocationSearch from '../util/LocationSearch.js';
+import PlaceLocator from '../util/placeIdToLatLng.js';
 
 
 
@@ -47,6 +49,7 @@ export default class Home extends React.Component {
 
         this.gasPrices = new GasPriceGrabber();
         this.api = new APIProxy();
+        this.placesLocation = new PlaceLocator();
 
     }
 
@@ -81,12 +84,12 @@ export default class Home extends React.Component {
 
     scheduleJobSuccess(responseJson){
         console.log("Success, response: ");
-        console.log(responseJson);
+        //console.log(responseJson);
     }
 
     scheduleJobFail(responseJson){
         console.log("Failed scheduling: ");
-        console.log(responseJson);
+        //console.log(responseJson);
 
     }
 
@@ -192,6 +195,7 @@ export default class Home extends React.Component {
     handleRegionChange(region)
     {
         //can do checking and only allow re-pulling of gas stations on movement of x miles away from original pull
+        if(!region || !region.latitude || !region.longitude) return;
         this.setState({
             regionChanged: true,
             newLatLng: {
@@ -208,6 +212,16 @@ export default class Home extends React.Component {
         this.requestGasPricesFromRegion(this.state.newLatLng.latitude, this.state.newLatLng.longitude);
         this.setState( {
             regionChanged: false,
+        })
+    }
+
+    handleLocationSelected(data){
+        console.log(data);
+        //TODO: error handling
+        const placesId = data.place_id;
+        this.placesLocation.searchLocation(placesId, (latlng) => {
+            console.log(latlng);
+            this.handleRegionChange(latlng);
         })
     }
 
@@ -231,10 +245,24 @@ export default class Home extends React.Component {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421
                     }}
+                    region={{
+                        latitude: this.state.newLatLng.latitude,
+                        longitude: this.state.newLatLng.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
                     showsUserLocation={true}
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >
-                    <Header navigation={this.props.navigation}/>
+                    <View>
+                        <Header navigation={this.props.navigation}/>
+                        <LocationSearch
+                            handlePress={(data) => this.handleLocationSelected(data)}
+                            latitude={this.state.latlng.latitude}
+                            longitude={this.state.latlng.longitude}
+                        />
+                    </View>
+
                     <Circle
                         //TODO: update latlng on user location change
                         center={this.state.latlng}
@@ -321,12 +349,9 @@ const styles = StyleSheet.create({
         height: 50,
         backgroundColor: 'gray',
     },
-    input: {
-        width: "90%",
-        backgroundColor: "#fff",
-        padding: 15,
-        marginBottom: 10
-    },
+    search: {
+        top: 200,
+    }
 
 });
 
