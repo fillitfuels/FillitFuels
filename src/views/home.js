@@ -9,6 +9,7 @@ import { Auth } from 'aws-amplify';
 import awsConfig from '../util/config.js';
 import Header, {headerHeight} from '../util/CustomHeader.js';
 import LocationSearch from '../util/LocationSearch.js';
+import PlaceLocator from '../util/placeIdToLatLng.js';
 
 
 
@@ -48,6 +49,7 @@ export default class Home extends React.Component {
 
         this.gasPrices = new GasPriceGrabber();
         this.api = new APIProxy();
+        this.placesLocation = new PlaceLocator();
 
     }
 
@@ -82,12 +84,12 @@ export default class Home extends React.Component {
 
     scheduleJobSuccess(responseJson){
         console.log("Success, response: ");
-        console.log(responseJson);
+        //console.log(responseJson);
     }
 
     scheduleJobFail(responseJson){
         console.log("Failed scheduling: ");
-        console.log(responseJson);
+        //console.log(responseJson);
 
     }
 
@@ -213,6 +215,16 @@ export default class Home extends React.Component {
         })
     }
 
+    handleLocationSelected(data){
+        console.log(data);
+        //TODO: error handling
+        const placesId = data.place_id;
+        this.placesLocation.searchLocation(placesId, (latlng) => {
+            console.log(latlng);
+            this.handleRegionChange(latlng);
+        })
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -233,12 +245,22 @@ export default class Home extends React.Component {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421
                     }}
+                    region={{
+                        latitude: this.state.newLatLng.latitude,
+                        longitude: this.state.newLatLng.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
                     showsUserLocation={true}
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >
                     <View>
                         <Header navigation={this.props.navigation}/>
-                        <LocationSearch style={styles.search}/>
+                        <LocationSearch
+                            handlePress={(data) => this.handleLocationSelected(data)}
+                            latitude={this.state.latlng.latitude}
+                            longitude={this.state.latlng.longitude}
+                        />
                     </View>
 
                     <Circle

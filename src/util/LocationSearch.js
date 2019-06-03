@@ -4,9 +4,10 @@ import React from 'react';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {headerWidth, remainingWidth} from './CustomHeader.js';
 
+const searchRadius = 15000; //radius around current location
 
 
-const LocationSearch = () => {
+const LocationSearch = ({handlePress, latitude, longitude}) => {
 
     return (
         <GooglePlacesAutocomplete
@@ -18,14 +19,17 @@ const LocationSearch = () => {
             fetchDetails={true}
             renderDescription={row => row.description}
             onPress={(data, details=null) => {
-                console.log(data, details);
+                handlePress(data);
             }}
 
             getDefaultValue={()=>''}
             query={{
                 key: 'AIzaSyDdjK9u_nT38yMAOUPlQ3HLhN3TphJ0Tak',
                 language: 'en',
-                types: '(cities)'
+                //locationbias: 'circle:'+searchRadius+'@' + latitude + ',' + longitude,
+                location: latitude + ',' + longitude,
+                radius: searchRadius,
+                fields: 'geometry/location',
             }}
 
             styles={{
@@ -55,12 +59,13 @@ const LocationSearch = () => {
 
             currentLocation={true}
             currentLocationLabel="Current location"
-            nearbyPlacesAPI='GoogleReverseGeocoding'
+            //nearbyPlacesAPI='GoogleReverseGeocoding'
+            nearbyPlacesAPI='GooglePlacesSearch'
             GoogleReverseGeocodingQuery={{
 
             }}
             GooglePlacesSearchQuery={{
-                rankby: 'distance'
+
             }}
             GooglePlacesDetailsQuery={{
                 fields: 'formatted_address',
