@@ -3,6 +3,7 @@ import React from 'react';
 
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
 import {headerWidth, remainingWidth} from './CustomHeader.js';
+import {key} from './keyinfo.js';
 
 const searchRadius = 15000; //radius around current location
 
@@ -24,7 +25,7 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
 
             getDefaultValue={()=>''}
             query={{
-                key: 'AIzaSyDdjK9u_nT38yMAOUPlQ3HLhN3TphJ0Tak',
+                key: key,
                 language: 'en',
                 //locationbias: 'circle:'+searchRadius+'@' + latitude + ',' + longitude,
                 location: latitude + ',' + longitude,

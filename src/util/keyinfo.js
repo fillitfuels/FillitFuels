@@ -3,5 +3,5 @@
 import React from 'react';
 
 
-const key = 'AIzaSyDdjK9u_nT38yMAOUPlQ3HLhN3TphJ0Tak';
+const key = 'AIzaSyDT73GFGk1DFt4Hlgjhp7OBLjCpLMWCMs8';
 export {key};
