@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TouchableOpacity, Text, View, StyleSheet, TextInput} from 'react-native';
+import {TouchableOpacity, Text, View, StyleSheet, Image} from 'react-native';
 
 
 import MapView from 'react-native-maps';
@@ -20,6 +20,7 @@ Amplify.configure(awsConfig);
 import GasPriceGrabber from '../util/gas_prices';
 import APIProxy from '../util/apiCommunication';
 import ScheduleModal from '../util/scheduleModal';
+import StationIcons from '../util/StationIcons.js';
 
 
 export default class Home extends React.Component {
@@ -50,6 +51,7 @@ export default class Home extends React.Component {
         this.gasPrices = new GasPriceGrabber();
         this.api = new APIProxy();
         this.placesLocation = new PlaceLocator();
+        this.gasStations = new StationIcons();
 
     }
 
@@ -130,6 +132,13 @@ export default class Home extends React.Component {
         return coords;
     }
 
+    fetchIcon(name){
+        const lower_name = name.toLowerCase();
+
+        const iconLocation = this.gasStations.getIconLocation(lower_name);
+        return iconLocation;
+    }
+
     requestGasPricesFromRegion(lat, long)
     {
         this.gasPrices.getGasPrices(lat, long, (responseJson) => {
@@ -137,6 +146,8 @@ export default class Home extends React.Component {
             const stations = responseJson;
             for(let i=0; i<stations.length; i++){
                 const station = stations[i];
+                const icon = this.fetchIcon(station.station);
+                if(!icon) continue;
                 const marker = {
                     latlng: {
                         latitude: station.lat,
@@ -145,6 +156,7 @@ export default class Home extends React.Component {
                     title: station.station,
                     description: station.prices.Regular.toString(),
                     coords: this.getCoords(station),
+                    icon: icon,
                 };
                 markers.push(marker);
             }
@@ -276,7 +288,8 @@ export default class Home extends React.Component {
                                 title={marker.title}
                                 description={marker.description}>
                             <View style={styles.marker}>
-                                <Text>{marker.title}{'\n'}{marker.description}</Text>
+                                <Image source={require(marker.icon)}/>
+                                <Text>{marker.description}</Text>
                             </View>
                         </Marker>
                     ))}
@@ -346,9 +359,15 @@ const styles = StyleSheet.create({
     },
 
     marker: {
-        width: 75,
-        height: 50,
-        backgroundColor: 'gray',
+        flex: 0,
+        flexDirection: 'row',
+        alignSelf: 'flex-start',
+        backgroundColor: '#FF5A5F',
+        paddingVertical: 2,
+        paddingHorizontal: 4,
+        borderRadius: 3,
+        borderColor: '#D23F44',
+        borderWidth: 0.5,
     },
     search: {
         top: 200,
