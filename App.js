@@ -6,7 +6,12 @@ import MapView from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not
 import { createDrawerNavigator} from "react-navigation";
 import {withAuthenticator, Authenticator} from 'aws-amplify-react-native';
 
+import Container from './src/Container';
+import Card from './src/Card';
+import FrontSetUp from './src/views/frontSetUp';
+
 import MainNavigator from './src/Main.js';
+
 
 
 class HomeScreen extends Component{
@@ -15,34 +20,12 @@ class HomeScreen extends Component{
     };
     render() {
         return (
-            <View style={styles.container}>
-                <StatusBar
-                    backgroundColor="#1e90ff"
-                    barStyle="light-content"
-                />
-                <Text style={styles.welcome}>Login to Fillit!</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder= "Email Address"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder= "Password"
-                    secureTextEntry
-                />
-                    <View style={styles.btnContainer}>
-                    <TouchableOpacity
-                        style={styles.userBtn}
-                        onPress={() => this.props.navigation.navigate('Details')}>
-                        <Text style={styles.btnTxt}>Login</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.userBtn}
-                        onPress={() => this.props.navigation.navigate('SignUp')}>
-                        <Text style={styles.btnTxt}>Sign Up</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+
+            <Container>
+                <Card>
+            <FrontSetUp/>
+                </Card>
+            </Container>
         );
     }
 }
@@ -117,7 +100,7 @@ type Props = {};
 }
 */
 
-export default withAuthenticator(MainNavigator);
+//export default withAuthenticator(MainNavigator);
 
 class DetailsScreen extends Component {
     static navigationOptions = {
@@ -169,12 +152,27 @@ const RootStack= createStackNavigator(
 
 const AppContainer = createAppContainer(RootStack);
 
+export default withAuthenticator(AppContainer);
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#1e90ff',
+        backgroundColor: '#fff',
+    },
+    title: {
+        fontSize: 30,
+        textAlign: 'center',
+        margin: 10,
+        fontWeight: 'bold',
+        color: '#000000',
+    },
+    sentence: {
+        fontSize: 15,
+        textAlign: 'center',
+        margin: 10,
+        color: '#000000',
     },
     registrationContainer: {
         flex: 1,
@@ -203,18 +201,22 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     userBtn: {
-        backgroundColor: "#FFD700",
+        backgroundColor: "#85D4E7",
         padding: 15,
-        width: "45%",
+        width: "90%",
+        alignItems: 'center',
     },
     btnContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "90%"
+        //flexDirection: "row",
+        //justifyContent: "space-between",
+        width: "90%",
+        alignItems: 'center',
     },
     btnTxt: {
-        fontSize: 18,
-        textAlign: "center"
+        fontSize: 15,
+        textAlign: "center",
+        fontWeight: 'bold',
+        color: '#fff',
     },
     signUpBtn: {
         backgroundColor: "#FFD700",
