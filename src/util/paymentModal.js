@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 import Modal from 'react-native-modal';
-import{ Image, View, Text, DatePickerIOS, Button} from 'react-native';
+import{ Image, View, Text, DatePickerIOS, Button, Dimensions} from 'react-native';
+
+let {height, width} = Dimensions.get('window');
 
 export default class PaymentModal extends React.Component{
 
@@ -34,7 +36,7 @@ export default class PaymentModal extends React.Component{
                         source={require('../../assets/Pictures/payment.png')}
                         style={{
                             //flex: 1,
-                            width: 370,
+                            width: width - 40,
                             height: 400,
                         }}
                         resizeMode="contain"
@@ -42,7 +44,7 @@ export default class PaymentModal extends React.Component{
                     <Button
                         title="Pay"
                         onPress={() => {
-                            this.props.handleConfirm(this.state.date, this.state.notes);
+                            this.props.handleClick();
                         }}
                     />
                 </View>

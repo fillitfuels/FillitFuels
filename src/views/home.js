@@ -223,6 +223,12 @@ export default class Home extends React.Component {
         });
     }
 
+    closePayment() {
+        this.setState({
+            showPaymentModal: false,
+        });
+    }
+
     handleSearchNewRegion()
     {
         //this function is only called when state.regionChanged is true
@@ -261,6 +267,7 @@ export default class Home extends React.Component {
                 {this.state.showPaymentModal && (
                     <PaymentModal
                         visible={true}
+                        handleClick={() =>this.closePayment()}
                     >
 
                     </PaymentModal>
