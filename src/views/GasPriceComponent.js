@@ -2,33 +2,27 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, StatusBar} from 'react-native';
 
-export default class GasPriceComponent extends Component{
-    static navigationOptions = {
-        header: null
-    };
-    render() {
-        return (
 
-            <View style={styles.container}>
-                <StatusBar
-                    backgroundColor="#1e90ff"
-                    barStyle="light-content"
-                />
-                <Text style={styles.title}>YOUR GAS PRICE TODAY</Text>
-                <Text style={styles.gasPricing}>$4.09/gal</Text>
-                <Text style={styles.sentence}>Prices are calculated daily based on the lowest gas station price in your area! </Text>
-                <View style={styles.btnContainer}>
-                    <TouchableOpacity
-                        style={styles.userBtn}
-                        onPress={() => this.props.navigation.navigate('Details')}>
-                        <Text style={styles.btnTxt}>See local prices</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+const GasPriceComponent = ({navigation}) => (
+    <View style={styles.container}>
+        <StatusBar
+            backgroundColor="#1e90ff"
+            barStyle="light-content"
+        />
+        <Text style={styles.title}>YOUR GAS PRICE TODAY</Text>
+        <Text style={styles.gasPricing}>$4.09/gal</Text>
+        <Text style={styles.sentence}>Prices are calculated daily based on the lowest gas station price in your area! </Text>
+        <View style={styles.btnContainer}>
+            <TouchableOpacity
+                style={styles.userBtn}
+                onPress={() => navigation.navigate(navigation.state.params.mapNav)}>
+                <Text style={styles.btnTxt}>See local prices</Text>
+            </TouchableOpacity>
+        </View>
+    </View>
+);
 
-        );
-    }
-}
+export default GasPriceComponent;
 
 
 

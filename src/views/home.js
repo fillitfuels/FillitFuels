@@ -46,6 +46,7 @@ export default class Home extends React.Component {
             markerY: 0.05,
             price: 0,
             showScheduleModal: false,
+            adjustRegion: false,
         };
 
         this.gasPrices = new GasPriceGrabber();
@@ -86,7 +87,7 @@ export default class Home extends React.Component {
 
     scheduleJobSuccess(responseJson){
         console.log("Success, response: ");
-        //console.log(responseJson);
+        console.log(responseJson);
     }
 
     scheduleJobFail(responseJson){
@@ -230,16 +231,21 @@ export default class Home extends React.Component {
     }
 
     handleLocationSelected(data){
-        console.log(data);
         //TODO: error handling
         const placesId = data.place_id;
         this.placesLocation.searchLocation(placesId, (latlng) => {
-            console.log(latlng);
+
             this.handleRegionChange(latlng);
+            this.setState({
+                adjustRegion: true,
+            });
         })
     }
 
     render() {
+        const adjustRegion = this.state.adjustRegion;
+        if (adjustRegion) this.setState({adjustRegion: false});
+
         return (
             <View style={styles.container}>
 
@@ -259,6 +265,13 @@ export default class Home extends React.Component {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421
                     }}
+                    region={this.state.adjustRegion ?
+                        {
+                        latitude: this.state.newLatLng.latitude,
+                        longitude: this.state.newLatLng.longitude,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421
+                    }: undefined}
                     showsUserLocation={true}
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >

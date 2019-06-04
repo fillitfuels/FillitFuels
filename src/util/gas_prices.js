@@ -60,7 +60,7 @@ export default class GasPriceGrabber extends React.Component {
                     prices: prices,
                 };
             });
-        }
+        };
 
 
         const getNextPages = (url, cursor, results) => {
@@ -89,7 +89,7 @@ export default class GasPriceGrabber extends React.Component {
                 .catch(error => {
                     console.error(error);
                 });
-        }
+        };
 
 
         getNextPages(request_url, 0, result);

@@ -8,9 +8,9 @@ import {key} from './keyinfo.js';
 const searchRadius = 150; //radius around current location
 
 const containerTop = 70;
-const containerLeft = 50;
+const containerLeft = 30;
 
-const textInputOffset = -23;
+const textInputOffset = 10;
 
 
 const LocationSearch = ({handlePress, latitude, longitude}) => {
@@ -21,7 +21,7 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
             minLength={2}
             autoFocus={false}
             returnKeyType={'search'}
-            listViewDisplayed='true'
+            listViewDisplayed='false'
             fetchDetails={true}
             renderDescription={row => row.description}
             onPress={(data, details=null) => {
@@ -47,7 +47,7 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
                 predefinedPlacesDescription: {
                     color: '#1faadb'
                 },
-                */
+
                 textInput: {
                     position: 'relative',
                     //center: headerWidth,
@@ -60,6 +60,7 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
                 },
                 listView: {
                     position: 'relative',
+                    top: 500,
                     height: 200,
                 },
                 textInputContainer: {
@@ -87,6 +88,40 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
                     top: containerTop,
                     width: remainingWidth,
                 }
+                */
+                container: {
+                    position: 'relative',
+                    top: containerTop,
+                    left: containerLeft,
+                    width: '90%',
+                    alignItems: 'center',
+                    margin: 'auto',
+                    borderWidth: 1,
+                    borderColor: 'black',
+                    borderRadius: 5,
+                },
+                textInput: {
+                    position: 'absolute',
+                    width: '90%',
+                    top: containerTop,
+                    left: containerLeft+textInputOffset,
+                },
+                textInputContainer: {
+                    //position: 'absolute',
+                    width: '100%',
+                },
+                description: {
+                    fontWeight: 'bold'
+                },
+                predefinedPlacesDescription: {
+                    color: '#1faadb'
+                },
+                listView: {
+                    position: 'absolute',
+                    top: 40,
+                    backgroundColor: '#C9C9CE',
+                },
+
             }}
 
             currentLocation={true}

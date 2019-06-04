@@ -3,7 +3,9 @@
 import React from 'react';
 import { createAppContainer, createDrawerNavigator, createStackNavigator } from "react-navigation";
 
-import GasMap from './views/gasMap';
+//import GasMap from './views/gasMap';
+import Home from './views/home.js';
+import Schedules from './views/SchedulesStack.js';
 import Payment from './views/payment.js';
 import Address from './views/addresses.js';
 import Vehicles from './views/vehicles.js';
@@ -12,6 +14,9 @@ import Gift from './views/gift';
 import CustomDrawerNavigator from './views/CustomDrawerNavigator.js';
 import Front from "./views/front.js";
 
+
+const mapPath = 'Map';
+
 const MainNavigator = createDrawerNavigator({
 
     Home: {
@@ -19,8 +24,27 @@ const MainNavigator = createDrawerNavigator({
             drawerLabel: "Home",
             //drawerIcon: TODO: implement icons
         },
+        params: {
+            mapNav: mapPath,
+        },
         screen: Front,
 
+    },
+
+    Map: {
+        navigationOptions: {
+            drawerLabel: "Map",
+            //drawerIcon: TODO: implement icons
+        },
+        path: mapPath,
+        screen: Home,
+    },
+    Schedule: {
+        navigationOptions: {
+            drawerLabel: "Scheduled Times",
+            //drawerIcon: TODO: implement icons
+        },
+        screen: Schedules,
     },
 
     Payment: {
