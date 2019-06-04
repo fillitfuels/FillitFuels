@@ -64,9 +64,15 @@ export default class Schedules extends Component{
                     <Header navigation={this.props.navigation}/>
                     <Card>
                         <ScheduleCard
+                            date={'06/04/2019'}
+                            time={"4:00PM"}
+                            navigation={this.props.navigation}
+                        >
 
-                        />
+                        </ScheduleCard>
+
                     </Card>
+
                 </Container>
                 <Header navigation={this.props.navigation}/>
 
