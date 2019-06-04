@@ -3,12 +3,14 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar} from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import MapView from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
-import { createDrawerNavigator} from "react-navigation";
+import {createDrawerNavigator} from "react-navigation";
 import {withAuthenticator, Authenticator} from 'aws-amplify-react-native';
 
 import Container from './src/Container';
 import Card from './src/Card';
 import FrontSetUp from './src/views/frontSetUp';
+import GasPriceComponent from './src/views/GasPriceComponent';
+import SavingsComponent from './src/views/SavingsComponent';
 
 import MainNavigator from './src/Main.js';
 
@@ -23,7 +25,13 @@ class HomeScreen extends Component{
 
             <Container>
                 <Card>
-            <FrontSetUp/>
+                    <FrontSetUp/>
+                </Card>
+                <Card>
+                    <GasPriceComponent/>
+                </Card>
+                <Card>
+                    <SavingsComponent/>
                 </Card>
             </Container>
         );
@@ -100,7 +108,7 @@ type Props = {};
 }
 */
 
-//export default withAuthenticator(MainNavigator);
+export default withAuthenticator(MainNavigator);
 
 class DetailsScreen extends Component {
     static navigationOptions = {
@@ -152,7 +160,7 @@ const RootStack= createStackNavigator(
 
 const AppContainer = createAppContainer(RootStack);
 
-export default withAuthenticator(AppContainer);
+//export default withAuthenticator(AppContainer);
 
 const styles = StyleSheet.create({
     container: {

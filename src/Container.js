@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     content: {
         flexGrow: 1,
         justifyContent: "space-between",
-        padding: 10,
-        marginTop: 10,
+        padding: 20,
+        marginTop: 20,
     },
 });

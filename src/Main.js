@@ -1,16 +1,16 @@
 
 
 import React from 'react';
-import { createAppContainer, createDrawerNavigator } from "react-navigation";
+import { createAppContainer, createDrawerNavigator, createStackNavigator } from "react-navigation";
 
-import Home from './views/home.js';
+import GasMap from './views/gasMap';
 import Payment from './views/payment.js';
 import Address from './views/addresses.js';
-import Vehicles from './views/vehicles';
+import Vehicles from './views/vehicles.js';
 import Settings from './views/settings.js';
 import Gift from './views/gift';
 import CustomDrawerNavigator from './views/CustomDrawerNavigator.js';
-import Vehicle from "./views/vehicles";
+import Front from "./views/front.js";
 
 const MainNavigator = createDrawerNavigator({
 
@@ -19,7 +19,7 @@ const MainNavigator = createDrawerNavigator({
             drawerLabel: "Home",
             //drawerIcon: TODO: implement icons
         },
-        screen: Home,
+        screen: Front,
 
     },
 
@@ -36,7 +36,7 @@ const MainNavigator = createDrawerNavigator({
                 drawerLabel: "Vehicles",
                 //drawerIcon: TODO: implement icons
             },
-            screen: Vehicle,
+            screen: Vehicles,
         },
 
         Address: {
@@ -68,5 +68,8 @@ const MainNavigator = createDrawerNavigator({
     },
 );
 
-const Main = createAppContainer(MainNavigator);
+
+
+const Main = createAppContainer( MainNavigator
+);
 export default Main;
