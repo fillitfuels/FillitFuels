@@ -20,6 +20,7 @@ Amplify.configure(awsConfig);
 import GasPriceGrabber from '../util/gas_prices';
 import APIProxy from '../util/apiCommunication';
 import ScheduleModal from '../util/scheduleModal';
+import PaymentModal from '../util/paymentModal';
 import StationIcons from '../util/StationIcons.js';
 
 
@@ -46,6 +47,7 @@ export default class Home extends React.Component {
             markerY: 0.05,
             price: 0,
             showScheduleModal: false,
+            showPaymentModal: false,
             adjustRegion: false,
         };
 
@@ -99,6 +101,7 @@ export default class Home extends React.Component {
     scheduleJobTime(datetime, notes){
         this.setState({
             showScheduleModal: false,
+            showPaymentModal: true,
         });
 
         const rqBody = this.createRequestBody(datetime, notes);
@@ -254,6 +257,13 @@ export default class Home extends React.Component {
                         handleConfirm={(datetime, notes) => this.scheduleJobTime(datetime, notes)}
                         visible={true}
                     />
+                )}
+                {this.state.showPaymentModal && (
+                    <PaymentModal
+                        visible={true}
+                    >
+
+                    </PaymentModal>
                 )}
 
                 <MapView
