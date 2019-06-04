@@ -39,19 +39,17 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
             }}
 
             styles={{
+                /*
 
-                textInputContainer: {
-                    width: remainingWidth,
-                    //center: headerWidth,
-
-                    //marginLeft: 32,
-                    //paddingTop: 10,
-                    //marginTop: 30,
-                    left: containerLeft,
-                    top: containerTop,
-
+                description: {
+                    fontWeight: 'bold'
                 },
+                predefinedPlacesDescription: {
+                    color: '#1faadb'
+                },
+                */
                 textInput: {
+                    position: 'relative',
                     //center: headerWidth,
                     left: 30,
                     top: containerTop + textInputOffset,
@@ -60,23 +58,34 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
                     //paddingTop: 10,
                     //marginTop: 30,
                 },
-                description: {
-                    fontWeight: 'bold'
-                },
-                predefinedPlacesDescription: {
-                    color: '#1faadb'
-                },
                 listView: {
-                    //height: 100,
+                    position: 'relative',
+                    height: 200,
                 },
+                textInputContainer: {
+                    position: 'relative',
+                    width: remainingWidth,
+                    //center: headerWidth,
+
+                    //marginLeft: 32,
+                    //paddingTop: 10,
+                    //marginTop: 30,
+                    //left: containerLeft,
+                    //top: containerTop,
+
+                },
+
                 container: {
                     position: 'absolute',
                     backgroundColor: 'white',
-                    //center: headerWidth,
+                    borderWidth: 2,
+                    borderColor: 'rgb(50,50,50)',
+                    borderRadius: 5,
                     alignItems: 'center',
                     justifyContent: 'center',
                     left: containerLeft,
                     top: containerTop,
+                    width: remainingWidth,
                 }
             }}
 

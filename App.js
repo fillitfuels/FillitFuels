@@ -100,7 +100,7 @@ type Props = {};
 }
 */
 
-//export default withAuthenticator(MainNavigator);
+export default withAuthenticator(MainNavigator);
 
 class DetailsScreen extends Component {
     static navigationOptions = {
@@ -152,7 +152,7 @@ const RootStack= createStackNavigator(
 
 const AppContainer = createAppContainer(RootStack);
 
-export default withAuthenticator(AppContainer);
+//export default withAuthenticator(AppContainer);
 
 const styles = StyleSheet.create({
     container: {

@@ -259,12 +259,6 @@ export default class Home extends React.Component {
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421
                     }}
-                    region={{
-                        latitude: this.state.newLatLng.latitude,
-                        longitude: this.state.newLatLng.longitude,
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
                     showsUserLocation={true}
                     onRegionChangeComplete={(region) => this.handleRegionChange(region)}
                 >
@@ -280,7 +274,7 @@ export default class Home extends React.Component {
 
                     <Circle
                         //TODO: update latlng on user location change
-                        center={this.state.latlng}
+                        center={this.state.newLatLng}
                         radius={this.state.radius}
                     >
 
@@ -290,18 +284,23 @@ export default class Home extends React.Component {
                                 title={marker.title}>
                             <View style={styles.marker}>
                                 <Image
-                                    source={{
-                                    uri: 'file://' + marker.icon.DocumentFilePath,
-                                    }}
+                                    source={marker.icon}
                                     style={{
                                         //flex: 1,
-                                        width: 500,
-                                        height: 500,
+                                        width: 25,
+                                        height: 25,
                                     }}
                                     resizeMode="contain"
 
                                 />
-                                <Text>{marker.description}</Text>
+                                <Text
+                                    style={{
+                                        top: 4,
+                                        paddingLeft: 8,
+                                        color: 'rgb(255,255,255)',
+                                        fontWeight: '900',
+                                    }}
+                                >{marker.description}</Text>
                             </View>
                         </Marker>
                     ))}
@@ -374,12 +373,12 @@ const styles = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         alignSelf: 'flex-start',
-        backgroundColor: '#FF5A5F',
+        backgroundColor: 'rgb(34,139,34)',
         paddingVertical: 2,
         paddingHorizontal: 4,
         borderRadius: 3,
-        borderColor: '#D23F44',
-        borderWidth: 0.5,
+        borderColor: 'rgb(0,0,0)',
+        borderWidth: 1,
     },
     search: {
         top: 200,
