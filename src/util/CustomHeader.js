@@ -29,7 +29,7 @@ export {headerHeight, headerWidth, remainingWidth};
 const styles = {
     container: {
         height: headerHeight,
-        paddingTop: 20,
+        paddingTop: 10,
         flex:1,
         position: 'absolute',
         left: 0,
@@ -39,6 +39,6 @@ const styles = {
     },
     icon: {
         paddingLeft: 20,
-        paddingTop: 5,
+        paddingTop: 10,
     }
 };
