@@ -28,6 +28,9 @@ export default class Front extends Component{
                     <FrontSetUp/>
                 </Card>
                 <Card>
+                    <Deal/>
+                </Card>
+                <Card>
                     <GasPriceComponent
                         navigation={this.props.navigation}
                     />
