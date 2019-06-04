@@ -21,7 +21,7 @@ export default class FrontSetUp extends Component{
                             <TouchableOpacity
                                 style={styles.userBtn}
                                 onPress={() => this.props.navigation.navigate('Details')}>
-                                <Text style={styles.btnTxt}>SETUP GAS DELIVERY</Text>
+                                <Text style={styles.btnTxt}>ORDER A DELIVERY</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

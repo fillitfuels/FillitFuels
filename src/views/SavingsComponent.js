@@ -15,14 +15,26 @@ export default class SavingsComponent extends Component{
                     barStyle="light-content"
                 />
                 <Text style={styles.title}>FILLIT LIFETIME SAVINGS</Text>
-                <Text style={styles.sentence}>Fillit can save you big in the long run. Here's how much you have saved so far! </Text>
-                <View style={styles.btnContainer}>
-                    <TouchableOpacity
-                        style={styles.userBtn}
-                        onPress={() => this.props.navigation.navigate('Details')}>
-                        <Text style={styles.btnTxt}>See local prices</Text>
-                    </TouchableOpacity>
+                <View style={styles.circleContainer}>
+                <View style={styles.circle}>
+                    <Text style={styles.circleNumber}>125</Text>
+                    <Text style={styles.circleSentence}>dollars</Text>
                 </View>
+                    <View style={styles.circle}>
+                        <Text style={styles.circleNumber}>25</Text>
+                        <Text style={styles.circleSentence}>hours</Text>
+                    </View>
+                    <View style={styles.circle}>
+                        <Text style={styles.circleNumber}>120</Text>
+                        <Text style={styles.circleSentence}>gallons</Text>
+                    </View>
+                    <View style={styles.circle}>
+                        <Text style={styles.circleNumber}>3 </Text>
+                        <Text style={styles.circleSentence}>trees </Text>
+                    </View>
+                </View>
+                <Text style={styles.sentence}>Fillit can save you big in the long run. Here's how much you have saved so far! </Text>
+                <Text style={styles.btnTxt}>Learn more about how you are saving</Text>
             </View>
 
         );
@@ -73,8 +85,39 @@ const styles = StyleSheet.create({
     btnTxt: {
         fontSize: 15,
         textAlign: "center",
+        textDecorationLine: 'underline',
+        color: '#85D4E7',
+    },
+
+    circle: {
+        borderRadius:30,
+        width: 60,
+        height: 60,
+        borderWidth: 2,
+        borderColor: '#1e90ff',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        marginHorizontal: 10
+
+    },
+    circleSentence: {
+        fontSize: 10,
+        textAlign: 'center',
+        color: '#000000',
+    },
+    circleNumber: {
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#000000',
         fontWeight: 'bold',
-        color: '#fff',
+    },
+    circleContainer: {
+        flex: 1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#fff',
     },
 
 });
