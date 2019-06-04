@@ -5,9 +5,12 @@ import React from 'react';
 export default class Stationicons extends React.Component {
 
     stations = {
-        shell: '../assets/Pictures/shell.png',
-        '76': '../assets/Pictures/76.svg',
-        arco: '../assets/Pictures/arco.png',
+        shell: require('../../assets/Pictures/shell.png'),
+        '76': require('../../assets/Pictures/76.png'),
+        arco: require('../../assets/Pictures/arco.png'),
+        chevron: require('../../assets/Pictures/chevron.png'),
+        mobil: require('../../assets/Pictures/mobil.png'),
+        valero: require('../../assets/Pictures/valero.png'),
     };
 
 

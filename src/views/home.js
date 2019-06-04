@@ -147,14 +147,16 @@ export default class Home extends React.Component {
             for(let i=0; i<stations.length; i++){
                 const station = stations[i];
                 const icon = this.fetchIcon(station.station);
-                if(!icon) continue;
+                let price = station.prices.Regular;
+
+                if(!icon || price <= 0.1) continue;
                 const marker = {
                     latlng: {
                         latitude: station.lat,
                         longitude: station.lng,
                     },
                     title: station.station,
-                    description: station.prices.Regular.toString(),
+                    description: price.toString(),
                     coords: this.getCoords(station),
                     icon: icon,
                 };
@@ -285,10 +287,20 @@ export default class Home extends React.Component {
                     </Circle>
                     {this.state.markers.map( marker => (
                         <Marker coordinate={marker.latlng}
-                                title={marker.title}
-                                description={marker.description}>
+                                title={marker.title}>
                             <View style={styles.marker}>
-                                <Image source={require(marker.icon)}/>
+                                <Image
+                                    source={{
+                                    uri: 'file://' + marker.icon.DocumentFilePath,
+                                    }}
+                                    style={{
+                                        //flex: 1,
+                                        width: 500,
+                                        height: 500,
+                                    }}
+                                    resizeMode="contain"
+
+                                />
                                 <Text>{marker.description}</Text>
                             </View>
                         </Marker>
