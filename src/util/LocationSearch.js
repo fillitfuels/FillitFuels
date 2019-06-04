@@ -5,7 +5,12 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 import {headerWidth, remainingWidth} from './CustomHeader.js';
 import {key} from './keyinfo.js';
 
-const searchRadius = 1500; //radius around current location
+const searchRadius = 150; //radius around current location
+
+const containerTop = 70;
+const containerLeft = 50;
+
+const textInputOffset = -23;
 
 
 const LocationSearch = ({handlePress, latitude, longitude}) => {
@@ -34,12 +39,26 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
             }}
 
             styles={{
+
                 textInputContainer: {
                     width: remainingWidth,
-                    left: headerWidth,
+                    //center: headerWidth,
+
+                    //marginLeft: 32,
+                    //paddingTop: 10,
+                    //marginTop: 30,
+                    left: containerLeft,
+                    top: containerTop,
+
                 },
                 textInput: {
-                    left: headerWidth,
+                    //center: headerWidth,
+                    left: 30,
+                    top: containerTop + textInputOffset,
+                    //marginLeft: 50,
+
+                    //paddingTop: 10,
+                    //marginTop: 30,
                 },
                 description: {
                     fontWeight: 'bold'
@@ -48,13 +67,16 @@ const LocationSearch = ({handlePress, latitude, longitude}) => {
                     color: '#1faadb'
                 },
                 listView: {
-                    flex: 1,
-                    height: 100,
+                    //height: 100,
                 },
                 container: {
                     position: 'absolute',
                     backgroundColor: 'white',
-                    left: headerWidth,
+                    //center: headerWidth,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    left: containerLeft,
+                    top: containerTop,
                 }
             }}
 

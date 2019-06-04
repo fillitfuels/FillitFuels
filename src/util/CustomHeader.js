@@ -21,7 +21,7 @@ const CustomHeader = ({navigation}) => (
 export default CustomHeader;
 
 const headerHeight = 70;
-const headerWidth = 50;
+const headerWidth = 82;
 const remainingWidth = width - headerWidth;
 export {headerHeight, headerWidth, remainingWidth};
 
@@ -36,7 +36,6 @@ const styles = {
         top: 0,
         //width: width,
         width: headerWidth,
-
     },
     icon: {
         paddingLeft: 20,

@@ -13,6 +13,7 @@ import CustomDrawerNavigator from './views/CustomDrawerNavigator.js';
 import Vehicle from "./views/vehicles";
 
 const MainNavigator = createDrawerNavigator({
+
     Home: {
         navigationOptions: {
             drawerLabel: "Home",
