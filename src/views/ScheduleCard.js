@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar} from 'react-native';
 
 export default class ScheduleCard extends Component{
-    static navigationOptions = {
-        header: null
-    };
+
+
+
     render() {
         return (
 
@@ -14,14 +14,15 @@ export default class ScheduleCard extends Component{
                     backgroundColor="#1e90ff"
                     barStyle="light-content"
                 />
-                <Text style={styles.title}>Hello Frank!</Text>
-                <Text style={styles.sentence}>Get your tank topped off every week and add extra services to
-                    your visits like car washes, tire checks, and more. </Text>
+                <Text style={styles.title}>{this.props.date}{' '}{this.props.time}</Text>
+                <Text style={styles.sentence}>Current Status: Active</Text>
                 <View style={styles.btnContainer}>
                     <TouchableOpacity
                         style={styles.userBtn}
-                        onPress={() => this.props.navigation.navigate('Details')}>
-                        <Text style={styles.btnTxt}>ORDER A DELIVERY</Text>
+                        onPress={() => this.props.navigation.navigate(
+                            'DriverRoute',
+                            {routeId: '1'})}>
+                        <Text style={styles.btnTxt}>View the Driver's Location</Text>
                     </TouchableOpacity>
                 </View>
             </View>

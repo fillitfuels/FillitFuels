@@ -14,13 +14,15 @@ export default class APIProxy extends React.Component {
 
 
     requestServer(auth, resource, postBody, callback, error) {
+        console.log(auth);
+        console.log(this.baseUrl + '/' + resource);
 
         fetch(this.baseUrl + '/' + resource, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                Authorization: auth,
+                Auth: auth,
             },
             body: JSON.stringify(postBody),
         })

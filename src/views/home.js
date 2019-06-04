@@ -30,12 +30,12 @@ export default class Home extends React.Component {
 
         this.state = {
             latlng:{
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: 33.6405,
+                longitude: -117.8443,
             },
             newLatLng:{
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: 33.6405,
+                longitude: -117.8443,
             },
             error: null,
             markers: [],
@@ -105,7 +105,6 @@ export default class Home extends React.Component {
         console.log("Scheduled");
         Auth.currentAuthenticatedUser()
             .then( (auth) => {
-                console.log(auth);
                 const idToken = auth.signInUserSession.idToken.jwtToken;
                 this.api.requestServer( idToken,'schedule', rqBody,
                     (res) => {this.scheduleJobSuccess(res)},
