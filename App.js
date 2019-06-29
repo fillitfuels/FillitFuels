@@ -158,7 +158,7 @@ const RootStack= createStackNavigator(
 );
 
 
-const AppContainer = createAppContainer(RootStack);
+//const AppContainer = createAppContainer(RootStack);
 
 //export default withAuthenticator(AppContainer);
 

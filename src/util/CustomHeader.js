@@ -39,6 +39,6 @@ const styles = {
     },
     icon: {
         paddingLeft: 20,
-        paddingTop: 10,
+        paddingTop: 25,
     }
 };

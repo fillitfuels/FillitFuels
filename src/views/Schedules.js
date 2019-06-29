@@ -54,18 +54,20 @@ export default class Schedules extends Component{
         this.fetchSchedules();
 
     }
-
+static navigationOptions = {
+        title: 'Schedules'
+};
 
     render() {
         return (
             <View style={styles.container}>
-
+                <Header navigation={this.props.navigation}/>
                 <Container>
-                    <Header navigation={this.props.navigation}/>
+
                     <Card>
                         <ScheduleCard
                             date={'06/04/2019'}
-                            time={"4:00PM"}
+                            day={"Friday"}
                             navigation={this.props.navigation}
                         >
 
@@ -74,7 +76,7 @@ export default class Schedules extends Component{
                     </Card>
 
                 </Container>
-                <Header navigation={this.props.navigation}/>
+
 
             </View>
 
@@ -90,6 +92,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
+       // margin: 15
     },
     title: {
         fontSize: 30,

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-import { createStackNavigator } from "react-navigation";
+import {createSwitchNavigator} from "react-navigation";
 import Schedule from './Schedules.js';
 import DriverRoute from './DriverRoute.js';
 
 
 
 
-const ScheduleStackNavigator = createStackNavigator(
+const OrderSwitchNavigator = createSwitchNavigator(
     {
         ScheduleDisplay: {
             screen: Schedule,
@@ -26,8 +26,7 @@ const ScheduleStackNavigator = createStackNavigator(
     {
         initialRouteName: 'ScheduleDisplay',
 
-    },
-
+    }
 );
 
-export default ScheduleStackNavigator;
+export default OrderSwitchNavigator;

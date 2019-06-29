@@ -5,7 +5,6 @@ import {StyleSheet, Text, View, TextInput, TouchableOpacity, StatusBar} from 're
 export default class ScheduleCard extends Component{
 
 
-
     render() {
         return (
 
@@ -14,8 +13,15 @@ export default class ScheduleCard extends Component{
                     backgroundColor="#1e90ff"
                     barStyle="light-content"
                 />
-                <Text style={styles.title}>{this.props.date}{' '}{this.props.time}</Text>
-                <Text style={styles.sentence}>Current Status: Active</Text>
+                <Text style={styles.day}>{this.props.day}</Text>
+                <Text style={styles.day}>{this.props.date}</Text>
+
+                <Text style={styles.sentence}>Current Status:
+
+                    <Text style={styles.status}> Incomplete</Text>
+
+                </Text>
+
                 <View style={styles.btnContainer}>
                     <TouchableOpacity
                         style={styles.userBtn}
@@ -40,7 +46,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
     },
-    title: {
+    day: {
+        fontSize: 30,
+        textAlign: 'center',
+        margin: 10,
+        fontWeight: 'bold',
+        color: '#000000',
+    },
+    top: {
         fontSize: 30,
         textAlign: 'center',
         margin: 10,
@@ -53,6 +66,12 @@ const styles = StyleSheet.create({
         margin: 10,
         color: '#000000',
     },
+    status: {
+        fontSize: 15,
+        textAlign: 'center',
+        color: 'blue',
+    },
+
     userBtn: {
         backgroundColor: "#85D4E7",
         padding: 15,
