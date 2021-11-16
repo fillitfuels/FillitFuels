@@ -9,7 +9,7 @@
   "dependencies": {
     "aws-amplify": "^1.1.28",
     "aws-amplify-react-native": "^2.1.12",
-    "aws-sdk": "^2.455.0",
+    "aws-sdk": "^2.814.0",
     "install": "^0.12.2",
     "native-base": "^2.12.1",
     "react": "16.8.3",
